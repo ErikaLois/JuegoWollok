@@ -12,7 +12,7 @@ object player {
 	var property direccion = izquierda
 	
 	method puedeRecibirDanio() = true
-	
+
 	//COMER
 	method comer(){
 		const consumiblesArriba = self.objectoEnCeldaA(arriba).filter{ obj => obj.puedeConsumirse() and !obj.haceDanio()}
@@ -69,6 +69,12 @@ object player {
 		}else{
 			self.morir()
 		}		
+	}
+	//RESET
+	method reset(){ //lo que sean los valores default
+		self.energia(300)
+		self.salud(10)
+		self.dinero(0)
 	}
 }
 

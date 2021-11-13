@@ -5,6 +5,7 @@ class Elementos{
 	var property position
 	const property image 
 	method puedeRecibirDanio() = false
+	method esPortal() = false
 	
 	//Abstact
 	method puedePisarse()
@@ -32,7 +33,6 @@ class Cajas inherits Elementos {
 			throw new Exception(message = "No puedo moverme!")
 		}
 	}
-	//Primer nivel
 	method estaEnDeposito(){
 		return llegadas.contains(self.position())
 	}

@@ -9,7 +9,7 @@ program juego_aventura {
 	game.width(15)
 	game.boardGround("default_background.jpg")
 
-	nivelBloques.configurate()	
-	//nivelLlaves.configurate()
+	//nivelBloques.configurate()	
+	nivelLlaves.configurate()
 	game.start()
 } 

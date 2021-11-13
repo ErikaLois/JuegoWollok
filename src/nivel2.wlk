@@ -7,13 +7,11 @@ import fondo.*
 import marcador.*
 import nivel1.*
 import personajes.*
-import portal.*
 import utilidades.*
 
 /*ADICIONAR INDUSTRICCIONES --> OBJETIVO NIVEL: JUNTAR X CANTIDAD DE DINERO Y ESCAPAR POR LA PUERTA AL LOGRARLO */
 //PIERDE 5 DE ENERGIA POR CADA PIEZA DE DINERO QUE JUNTA
 object nivelLlaves {
-	
 	method configurate() {
 		// FONDO - es importante que sea el primer visual que se agregue
 		game.addVisual(new Fondo(image="background_3.jpg"))
@@ -28,7 +26,7 @@ object nivelLlaves {
 		// 1. DINERO
 		5.times({ i=> consumibles.add(new Dinero(position= utilidades.posRand(), aporta = 5, image = "coin.png")) })
 		const objetivoDinero = consumibles.sum({d => d.aporta()})
-		
+
 		// 2. SALUD
 		5.times({ i=> consumibles.add(new Salud(position= utilidades.posRand(), aporta = 15, image = "botiquin.png")) })
 		
@@ -51,22 +49,26 @@ object nivelLlaves {
 		// FINALES DEL NIVEL
 		//keyboard.q().onPressDo({ self.perder() })
 		keyboard.r().onPressDo{ self.restart() }
-		keyboard.any().onPressDo{ self.verificar(objetivoDinero)}
-		//self.ganar()
 		
 		// COLISIONES
-		game.whenCollideDo(player, {elemento => player.recolectar(elemento)})
+		game.whenCollideDo(player, {elemento => player.recolectar(elemento) self.verificar(objetivoDinero)})
+		game.whenCollideDo(player, {elemento => if (elemento.esPortal()) self.ganar()})
 
 	}
 	
 	method verificar(objetivoDinero) {
 		if (objetivoDinero == player.dinero() and player.energia()> 0) {
-				//game.say(player, "LEVEL 2 COMPLETE!") 
-				game.addVisual(portal)
+				game.addVisual(new Portal(image="smallPortal.png"))
 		}
 	}
 	
+	method ganar(){
+		//Agregar las visuales y el fading necesario 
+		game.say(player, "LEVEL 2 COMPLETE!") 
+	}
+	
 	method restart() {
+		player.reset()
 		game.clear()
 		self.configurate()
 	}	

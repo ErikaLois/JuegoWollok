@@ -79,6 +79,7 @@ object nivelBloques {
 	
 	
 	method restart() {
+		player.reset()
 		game.clear()
 		self.configurate()
 	}

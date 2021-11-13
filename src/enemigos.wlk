@@ -10,6 +10,7 @@ class Enemigo{
 	method puedePisarse() = true
 	method puedeRecibirDanio() = false
 	method puedeConsumirse() = false
+	method esPortal() = false
 	method seDesplazaNormal() = true
 	method movete(dir){}
 	method desplazarse()
@@ -41,24 +42,13 @@ class EnemigoAlAcecho inherits Enemigo{
 		position = new Position(x=self.asignarPosX(player),y =self.asignarPosY(player))
 	}
 	method asignarPosX(player){
-	const posPlayerX = player.position().x()
-	var nuevaPos 
-	if(posPlayerX > self.position().x()){
-		nuevaPos = self.position().x()+1 
-	}else{
-		nuevaPos = self.position().x()-1
-		} 
-	return nuevaPos	
+		const posPlayerX = player.position().x()
+		return if(posPlayerX > self.position().x()){ self.position().x()+1 }
+		else{ self.position().x()-1 } 
 	}
 	method asignarPosY(player){
-	const posPlayerY = player.position().y()
-	var nuevaPos 
-	if(posPlayerY > self.position().y()){
-		nuevaPos = self.position().y()+1 
-	}else{
-		nuevaPos = self.position().y()-1
-		} 
-	return nuevaPos	
-	}
-	
+		const posPlayerY = player.position().y()
+		return if(posPlayerY > self.position().y()){ self.position().y()+1 }
+		else{ self.position().y()-1 } 
+	}	
 }

@@ -1,7 +1,7 @@
 import wollok.game.*
 
 class Fondo {
-	const property position = game.at(0,0)
+	const property position = game.origin()
 	var property image
 	method puedePisarse() = true
 	method puedeConsumirse() = false

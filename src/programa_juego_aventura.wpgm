@@ -1,0 +1,15 @@
+import wollok.game.*
+import nivel1.*
+import nivel2.*
+
+program juego_aventura {
+
+	game.title("Space Sokoban")
+	game.height(14)
+	game.width(15)
+	game.boardGround("default_background.jpg")
+
+	nivelBloques.configurate()	
+	//nivelLlaves.configurate()
+	game.start()
+} 

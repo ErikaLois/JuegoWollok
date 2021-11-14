@@ -11,7 +11,7 @@ import personajes.*
 import utilidades.*
 
 
-/*ADICIONAR INDUSTRICCIONES --> OBJETIVO NIVEL: JUNTAR X CANTIDAD DE DINERO Y ESCAPAR POR LA PUERTA AL LOGRARLO */
+/*ADICIONAR INSTRUCCIONES --> OBJETIVO NIVEL: JUNTAR X CANTIDAD DE DINERO Y ESCAPAR POR LA PUERTA AL LOGRARLO */
 //PIERDE 5 DE ENERGIA POR CADA PIEZA DE DINERO QUE JUNTA
 object nivelLlaves {
 	method configurate() {
@@ -19,7 +19,7 @@ object nivelLlaves {
 		game.addVisual(new Fondo(image="background_3.jpg"))
 		
 		//MARCADORES
-		const elementos = [salud, energia, dinero]
+		const elementos = [salud, energia, dinero, municion]
 		elementos.forEach{ elem => game.addVisual(elem)}
 		
 		// CONSUMIBLES - NIVEL 2
@@ -63,7 +63,7 @@ object nivelLlaves {
 		game.whenCollideDo(player, {elemento => if (elemento.esPortal()) self.terminar()})
 		enemigos.forEach{ e => 
 			game.whenCollideDo(e, {jugador => 
-				if(jugador.puedeRecibirDanio()){ e.hacerDanio(player) }
+				if(jugador.puedeRecibirDanio() and !jugador.haceDanio()){ e.hacerDanio(player) }
 			})
 		}
 		enemigos.forEach{ e => 

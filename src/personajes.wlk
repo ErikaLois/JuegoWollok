@@ -6,12 +6,14 @@ object player {
 	var property position = game.origin()
 	var property image = "spaceship.png"	
 	var property energia = 300
-	var property salud =  10
+	var property salud =  50
 	var property dinero = 0
 	var property municiones = 0
 	var property direccion = izquierda
+	var property disparosAcertados = 0
 	
 	method puedeRecibirDanio() = true
+	method haceDanio() = false
 
 	//COMER
 	method comer(){
@@ -54,7 +56,7 @@ object player {
 		energia += 1
 	}
 	method morir(){
-		//Falta implementar imagen al morir y implementar el metodo perder en nivel1
+		//Falta implementar imagen al morir 
 		image = "market.png"
 		game.schedule(1500,{
 			nivelBloques.perder()
@@ -63,7 +65,7 @@ object player {
 	}
 	//MOVIMIENTOS
 	method avanzar(){
-		if(energia > 0){
+		if(energia > 0 and salud>0){
 			position = direccion.moverSiguiente(position,self)
 			energia-=1
 		}else{
@@ -75,6 +77,7 @@ object player {
 		self.energia(300)
 		self.salud(10)
 		self.dinero(0)
+		self.municiones(0)
 	}
 }
 

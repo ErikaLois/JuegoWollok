@@ -18,7 +18,7 @@ object nivelBloques {
 		game.addVisual(new Fondo(image="background_2.jpg"))
 		
 		//MARCADORES
-		const elementos = [salud, energia, dinero]
+		const elementos = [salud, energia, dinero, municion]
 		elementos.forEach{ elem => game.addVisual(elem)}
 		
 		// DEPOSITO

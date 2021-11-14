@@ -6,21 +6,17 @@ class Elementos{
 	const property image 
 	method puedeRecibirDanio() = false
 	method esPortal() = false
+	method haceDanio() = false
 	
 	//Abstact
 	method puedePisarse()
 	method puedeConsumirse()
 	method moverse(direccion)
-	method haceDanio() 
 }
 class Cajas inherits Elementos {
 	const property llegadas
 	override method puedePisarse() = false
 	override method puedeConsumirse() = false
-	
-	override method haceDanio() = false
-	//override method puedeRecibirDanio() = false
-	
 	override method moverse(direccion){
 		self.validarLugar(direccion)
 		position = direccion.moverSiguiente(self.position(),self)

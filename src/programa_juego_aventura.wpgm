@@ -1,6 +1,7 @@
 import wollok.game.*
 import nivel1.*
 import nivel2.*
+import nivel3.*
 
 program juego_aventura {
 
@@ -10,6 +11,7 @@ program juego_aventura {
 	game.boardGround("default_background.jpg")
 
 	//nivelBloques.configurate()	
-	nivelLlaves.configurate()
+	//nivelLlaves.configurate()
+	nivelEnemigos.configurate()
 	game.start()
 } 

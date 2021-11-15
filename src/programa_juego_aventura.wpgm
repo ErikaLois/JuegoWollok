@@ -1,0 +1,16 @@
+import wollok.game.*
+import inicio.*
+import nivel3.*
+
+program juego_aventura {
+
+	game.title("La aventura de bubba")
+	game.height(16)
+	game.width(15)
+	game.boardGround("fondoBlanco.png")
+	
+	
+	niveles.configurate()
+	
+	game.start()
+} 
